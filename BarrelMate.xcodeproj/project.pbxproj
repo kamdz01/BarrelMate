@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		AA539B962D1E080800EC1166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA539B7A2D1E080600EC1166 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA539B812D1E080600EC1166;
+			remoteInfo = BarrelMate;
+		};
+		AA539BA02D1E080800EC1166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA539B7A2D1E080600EC1166 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA539B812D1E080600EC1166;
+			remoteInfo = BarrelMate;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA539B822D1E080600EC1166 /* BarrelMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarrelMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA539B952D1E080800EC1166 /* BarrelMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA539B9F2D1E080800EC1166 /* BarrelMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AA539B842D1E080600EC1166 /* BarrelMate */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BarrelMate;
+			sourceTree = "<group>";
+		};
+		AA539B982D1E080800EC1166 /* BarrelMateTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BarrelMateTests;
+			sourceTree = "<group>";
+		};
+		AA539BA22D1E080800EC1166 /* BarrelMateUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BarrelMateUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA539B7F2D1E080600EC1166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B922D1E080800EC1166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B9C2D1E080800EC1166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA539B792D1E080600EC1166 = {
+			isa = PBXGroup;
+			children = (
+				AA539B842D1E080600EC1166 /* BarrelMate */,
+				AA539B982D1E080800EC1166 /* BarrelMateTests */,
+				AA539BA22D1E080800EC1166 /* BarrelMateUITests */,
+				AA539B832D1E080600EC1166 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA539B832D1E080600EC1166 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA539B822D1E080600EC1166 /* BarrelMate.app */,
+				AA539B952D1E080800EC1166 /* BarrelMateTests.xctest */,
+				AA539B9F2D1E080800EC1166 /* BarrelMateUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA539B812D1E080600EC1166 /* BarrelMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA539BA92D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMate" */;
+			buildPhases = (
+				AA539B7E2D1E080600EC1166 /* Sources */,
+				AA539B7F2D1E080600EC1166 /* Frameworks */,
+				AA539B802D1E080600EC1166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AA539B842D1E080600EC1166 /* BarrelMate */,
+			);
+			name = BarrelMate;
+			packageProductDependencies = (
+			);
+			productName = BarrelMate;
+			productReference = AA539B822D1E080600EC1166 /* BarrelMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AA539B942D1E080800EC1166 /* BarrelMateTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA539BAC2D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMateTests" */;
+			buildPhases = (
+				AA539B912D1E080800EC1166 /* Sources */,
+				AA539B922D1E080800EC1166 /* Frameworks */,
+				AA539B932D1E080800EC1166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA539B972D1E080800EC1166 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA539B982D1E080800EC1166 /* BarrelMateTests */,
+			);
+			name = BarrelMateTests;
+			packageProductDependencies = (
+			);
+			productName = BarrelMateTests;
+			productReference = AA539B952D1E080800EC1166 /* BarrelMateTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AA539B9E2D1E080800EC1166 /* BarrelMateUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA539BAF2D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMateUITests" */;
+			buildPhases = (
+				AA539B9B2D1E080800EC1166 /* Sources */,
+				AA539B9C2D1E080800EC1166 /* Frameworks */,
+				AA539B9D2D1E080800EC1166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AA539BA12D1E080800EC1166 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AA539BA22D1E080800EC1166 /* BarrelMateUITests */,
+			);
+			name = BarrelMateUITests;
+			packageProductDependencies = (
+			);
+			productName = BarrelMateUITests;
+			productReference = AA539B9F2D1E080800EC1166 /* BarrelMateUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA539B7A2D1E080600EC1166 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					AA539B812D1E080600EC1166 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					AA539B942D1E080800EC1166 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = AA539B812D1E080600EC1166;
+					};
+					AA539B9E2D1E080800EC1166 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = AA539B812D1E080600EC1166;
+					};
+				};
+			};
+			buildConfigurationList = AA539B7D2D1E080600EC1166 /* Build configuration list for PBXProject "BarrelMate" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA539B792D1E080600EC1166;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AA539B832D1E080600EC1166 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA539B812D1E080600EC1166 /* BarrelMate */,
+				AA539B942D1E080800EC1166 /* BarrelMateTests */,
+				AA539B9E2D1E080800EC1166 /* BarrelMateUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA539B802D1E080600EC1166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B932D1E080800EC1166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B9D2D1E080800EC1166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA539B7E2D1E080600EC1166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B912D1E080800EC1166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA539B9B2D1E080800EC1166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AA539B972D1E080800EC1166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA539B812D1E080600EC1166 /* BarrelMate */;
+			targetProxy = AA539B962D1E080800EC1166 /* PBXContainerItemProxy */;
+		};
+		AA539BA12D1E080800EC1166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA539B812D1E080600EC1166 /* BarrelMate */;
+			targetProxy = AA539BA02D1E080800EC1166 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AA539BA72D1E080800EC1166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA539BA82D1E080800EC1166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AA539BAA2D1E080800EC1166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BarrelMate/BarrelMate.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BarrelMate/Preview Content\"";
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA539BAB2D1E080800EC1166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BarrelMate/BarrelMate.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BarrelMate/Preview Content\"";
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AA539BAD2D1E080800EC1166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarrelMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BarrelMate";
+			};
+			name = Debug;
+		};
+		AA539BAE2D1E080800EC1166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMateTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BarrelMate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BarrelMate";
+			};
+			name = Release;
+		};
+		AA539BB02D1E080800EC1166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BarrelMate;
+			};
+			name = Debug;
+		};
+		AA539BB12D1E080800EC1166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HLJV9D8SW5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kamdz.BarrelMateUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = BarrelMate;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA539B7D2D1E080600EC1166 /* Build configuration list for PBXProject "BarrelMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA539BA72D1E080800EC1166 /* Debug */,
+				AA539BA82D1E080800EC1166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA539BA92D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA539BAA2D1E080800EC1166 /* Debug */,
+				AA539BAB2D1E080800EC1166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA539BAC2D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMateTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA539BAD2D1E080800EC1166 /* Debug */,
+				AA539BAE2D1E080800EC1166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA539BAF2D1E080800EC1166 /* Build configuration list for PBXNativeTarget "BarrelMateUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA539BB02D1E080800EC1166 /* Debug */,
+				AA539BB12D1E080800EC1166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA539B7A2D1E080600EC1166 /* Project object */;
+}
