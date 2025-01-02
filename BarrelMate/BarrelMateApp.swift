@@ -10,23 +10,26 @@ import SwiftData
 
 @main
 struct BarrelMateApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    @StateObject private var viewModel = BrewViewModel()
+    var container: ModelContainer
 
+    init() {
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let storeURL = URL.applicationSupportDirectory.appendingPathComponent("BarrelMate").appending(path: "db.store")
+            let config = ModelConfiguration(url: storeURL)
+            container = try ModelContainer(for: BrewPackage.self, configurations: config)
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("Failed to configure SwiftData container.")
         }
-    }()
-
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                // Attach a SwiftData container for BrewPackage
+                .modelContainer(container)
+                // Provide the ViewModel as an environment object
+                .environmentObject(viewModel)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
