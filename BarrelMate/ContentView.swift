@@ -13,7 +13,11 @@ struct ContentView: View {
     @Environment(\.modelContext) private var context
     
     // SwiftData auto-fetch of BrewPackage items
-    @Query private var installedPackages: [BrewPackage]
+    @Query(sort: [
+        SortDescriptor(\BrewPackage.name, order: .forward),
+        SortDescriptor(\BrewPackage.version, order: .forward)
+    ]) private var installedPackages: [BrewPackage]
+
     
     @State private var newPackageName = ""
     @State private var newPackageType: BrewPackage.PackageType = .formula
@@ -26,9 +30,15 @@ struct ContentView: View {
                 List {
                     ForEach(installedPackages, id: \.id) { pkg in
                         HStack {
-                            Text(pkg.name)
-                            Spacer()
-                            Text(pkg.version)
+                            Grid(alignment: .leading) {
+                                GridRow {
+                                    Text(pkg.name)
+                                        .gridColumnAlignment(.leading)
+                                    Spacer()
+                                    Text(pkg.version)
+                                        .frame(width: 100, alignment: .leading) // Stała szerokość dla wersji
+                                }
+                            }
                             Spacer()
                             Button("Upgrade") {
                                 Task {
@@ -111,24 +121,15 @@ struct ContentView: View {
                 // Initial checks
                 Task {
                     await viewModel.checkBrew()
-//                    await viewModel.refreshPackages()
+                    await viewModel.refreshPackages()
                 }
             }
     }
 }
 
-
 #Preview {
     @Previewable @StateObject var viewModel = BrewViewModel()
-    var container: ModelContainer
-    do {
-        let storeURL = URL.applicationSupportDirectory.appendingPathComponent("BarrelMate").appending(path: "db.store")
-        let config = ModelConfiguration(url: storeURL)
-        container = try ModelContainer(for: BrewPackage.self, configurations: config)
-    } catch {
-        fatalError("Failed to configure SwiftData container.")
-    }
-    return ContentView()
-        .modelContainer(container)
+    ContentView()
+        .modelContainer(BrewPackageContainer)
         .environmentObject(viewModel)
 }
