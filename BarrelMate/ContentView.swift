@@ -97,7 +97,6 @@ struct ContentView: View {
         .sheet(isPresented: $isAddPackageSheetPresented) {
             AddPackageView()
                 .environmentObject(viewModel)
-                .frame(minWidth: 500, minHeight: 400)
         }
         .padding()
         .onAppear {
