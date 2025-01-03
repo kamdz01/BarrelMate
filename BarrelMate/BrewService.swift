@@ -12,6 +12,27 @@ enum BrewError: Error {
     case commandFailed(String)
 }
 
+actor OutputCollector {
+    private var stdoutData = Data()
+    private var stderrData = Data()
+    
+    func appendStdout(_ data: Data) {
+        stdoutData.append(data)
+    }
+    
+    func appendStderr(_ data: Data) {
+        stderrData.append(data)
+    }
+    
+    func getStdoutString() -> String {
+        String(data: stdoutData, encoding: .utf8) ?? ""
+    }
+    
+    func getStderrString() -> String {
+        String(data: stderrData, encoding: .utf8) ?? ""
+    }
+}
+
 struct BrewService {
     /// Returns a path to brew if it’s found in common locations.
     static func findBrewPath() -> String? {
@@ -61,6 +82,85 @@ struct BrewService {
         }
     }
     
+    /// Executes a brew command and *streams* each line of stdout/stderr via `onLineUpdate`.
+    /// Returns the entire stdout once the process completes.
+    static func runBrewCommandStreaming(arguments: [String], onLineUpdate: @escaping (String) -> Void) async throws -> String {
+        guard let brewPath = findBrewPath() else {
+            throw BrewError.brewNotFound
+        }
+
+        // The actor that collects output concurrently.
+        let collector = OutputCollector()
+        
+        return try await withCheckedThrowingContinuation { continuation in
+            let task = Process()
+            task.executableURL = URL(fileURLWithPath: brewPath)
+            task.arguments = arguments
+
+            let stdoutPipe = Pipe()
+            let stderrPipe = Pipe()
+            task.standardOutput = stdoutPipe
+            task.standardError  = stderrPipe
+            
+            // Handle stdout in real time.
+            stdoutPipe.fileHandleForReading.readabilityHandler = { handle in
+                let data = handle.availableData
+                guard !data.isEmpty else { return }
+                
+                Task {
+                    // Safely append to the actor.
+                    await collector.appendStdout(data)
+                    
+                    // Convert any newly read chunk into lines, call back.
+                    if let text = String(data: data, encoding: .utf8) {
+                        for line in text.components(separatedBy: .newlines) where !line.isEmpty {
+                            onLineUpdate(line)
+                        }
+                    }
+                }
+            }
+            
+            // Handle stderr similarly.
+            stderrPipe.fileHandleForReading.readabilityHandler = { handle in
+                let data = handle.availableData
+                guard !data.isEmpty else { return }
+                
+                Task {
+                    await collector.appendStderr(data)
+                    
+                    if let text = String(data: data, encoding: .utf8) {
+                        for line in text.components(separatedBy: .newlines) where !line.isEmpty {
+                            onLineUpdate(line)
+                        }
+                    }
+                }
+            }
+
+            // Termination handler is called once the process exits.
+            task.terminationHandler = { process in
+                stdoutPipe.fileHandleForReading.readabilityHandler = nil
+                stderrPipe.fileHandleForReading.readabilityHandler = nil
+
+                Task {
+                    // Retrieve final results from the actor.
+                    let finalStdout = await collector.getStdoutString()
+                    let finalStderr = await collector.getStderrString()
+
+                    if process.terminationStatus == 0 {
+                        continuation.resume(returning: finalStdout)
+                    } else {
+                        continuation.resume(throwing: BrewError.commandFailed(finalStderr))
+                    }
+                }
+            }
+
+            do {
+                try task.run()
+            } catch {
+                continuation.resume(throwing: error)
+            }
+        }
+    }
     // MARK: - Public Brew Actions
     
     /// Returns the version string from `brew --version`
@@ -113,5 +213,32 @@ struct BrewService {
             : ["upgrade", "--cask", name]
         
         _ = try await runBrewCommand(arguments: args)
+    }
+    
+    /// Installs a package, streaming the output and mapping lines to progress updates.
+    static func installPackageWithProgress(name: String, type: BrewPackage.PackageType, onProgress: @escaping (Double) -> Void) async throws {
+        let args: [String] = (type == .formula)
+            ? ["install", name]
+            : ["install", "--cask", name]
+
+        // A naive example of progress states:
+        let phases: [String: Double] = [
+            "==> Downloading":               0.1,
+            "==> Fetching dependencies":     0.2,
+            "==> Installing dependencies":   0.4,
+            "==> Installing \(name)":        0.6,
+            "==> Summary":                   0.8
+        ]
+        onProgress(0.01)
+        let _ = try await runBrewCommandStreaming(arguments: args) { line in
+            // Each time brew outputs a line, we check if it matches one of our known phases
+            for (key, progressValue) in phases {
+                if line.contains(key) {
+                    onProgress(progressValue)
+                    break
+                }
+            }
+        }
+        onProgress(1.0)
     }
 }

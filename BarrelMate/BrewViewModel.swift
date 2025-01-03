@@ -17,6 +17,7 @@ class BrewViewModel: ObservableObject {
     @Published var formulae: [Formula] = []
     @Published var casks: [Cask] = []
     
+    @Published var installedPackages: [BrewPackage] = []
     // We'll store a reference to SwiftData context to insert/delete/save packages
     var modelContext: ModelContext?
     
@@ -56,9 +57,10 @@ class BrewViewModel: ObservableObject {
             }
             
             // Insert the newly fetched packages
+            self.installedPackages.removeAll()
             for pkg in formulaeResult + casksResult {
                 context.insert(pkg)
-            }
+                self.installedPackages.append(pkg)            }
             
             // Save changes
             try context.save()

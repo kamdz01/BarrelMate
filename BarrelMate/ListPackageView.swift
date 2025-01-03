@@ -83,7 +83,7 @@ struct ListPackageView: View {
         .padding()
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button("Close") {
                     dismiss()
                 }
             }

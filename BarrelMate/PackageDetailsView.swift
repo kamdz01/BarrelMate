@@ -11,6 +11,7 @@ struct PackageDetailsView: View {
     @EnvironmentObject private var viewModel: BrewViewModel
     @Environment(\.dismiss) private var dismiss
     @Binding var selectedPackage: SelectedPackage?
+    @State var installProgress: Double = 0.0
 
     var body: some View {
         VStack {
@@ -33,11 +34,46 @@ struct PackageDetailsView: View {
                     Divider()
                     Text("Version (stable): \(formula.versions.stable ?? "")")
                     Text("Bottle: \(formula.versions.bottle)")
-                    Button("Install", action: {
-                        Task {
-                            await viewModel.install(name: formula.name, type: .formula)
+                    if installProgress > 0 {
+                        ProgressView(value: installProgress)
+                            .padding()
+                    }
+                    if installProgress == 1 {
+                        VStack(alignment: .center) {
+                            Text("Installation complete")
+                                .font(.headline)
+                            Image(systemName: "checkmark.circle")
+                                .foregroundStyle(.green)
+                                .font(.largeTitle)
                         }
-                    })
+                        .frame(maxWidth: .infinity)
+                    }
+                    if (!viewModel.installedPackages.contains(where: {tmp in
+                        return tmp.name == formula.name
+                    }) && installProgress == 0) {
+                        VStack(alignment: .center) {
+                            Button("Install", action: {
+                                Task {
+                                    do {
+                                        try await BrewService.installPackageWithProgress(
+                                            name: formula.name,
+                                            type: .formula
+                                        ) { progress in
+                                            Task { @MainActor in
+                                                withAnimation{
+                                                    installProgress = progress
+                                                }
+                                            }
+                                        }
+                                        await viewModel.refreshPackages()
+                                    } catch {
+                                        print("Install failed with error: \(error)")
+                                    }
+                                }
+                            })
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
                 }
             case .cask(let cask):
                 VStack(alignment: .leading, spacing: 10) {
@@ -65,7 +101,7 @@ struct PackageDetailsView: View {
         .padding()
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button("Close") {
                     dismiss()
                 }
             }
