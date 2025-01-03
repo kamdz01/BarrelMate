@@ -90,15 +90,12 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     HStack {
-                        Text("Homebrew")
-                            .font(.headline)
-                        Spacer()
                         if viewModel.brewPathFound {
-                            Text("Version: \(viewModel.brewVersion)")
+                            Text("Homebrew version: \(viewModel.brewVersion)")
                             Image(systemName: "checkmark.circle")
                                 .foregroundColor(.green)
                         } else {
-                            Text("Not Installed")
+                            Text("Homebrew not installed")
                             Image(systemName: "multiply.circle")
                                 .foregroundColor(.red)
                         }

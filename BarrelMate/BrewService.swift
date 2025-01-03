@@ -66,7 +66,7 @@ struct BrewService {
     /// Returns the version string from `brew --version`
     static func getBrewVersion() async throws -> String {
         let output = try await runBrewCommand(arguments: ["--version"])
-        return output.components(separatedBy: "\n").first ?? "Unknown"
+        return String(output.components(separatedBy: "\n").first?.split(separator: " ").last ?? "Unknown")
     }
     
     /// Returns a list of installed packages (formula or cask).
