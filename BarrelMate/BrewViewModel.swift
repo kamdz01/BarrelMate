@@ -14,6 +14,8 @@ class BrewViewModel: ObservableObject {
     @Published var brewPathFound: Bool = false
     @Published var brewVersion: String = "Not Installed"
     @Published var lastError: String?
+    @Published var formulae: [Formula] = []
+    @Published var casks: [Cask] = []
     
     // We'll store a reference to SwiftData context to insert/delete/save packages
     var modelContext: ModelContext?
@@ -91,5 +93,29 @@ class BrewViewModel: ObservableObject {
         } catch {
             lastError = error.localizedDescription
         }
+    }
+    
+    func fetchPackages() async {
+        do {
+            let formulaURL = URL(string: "https://formulae.brew.sh/api/formula.json")!
+            let caskURL = URL(string: "https://formulae.brew.sh/api/cask.json")!
+
+            async let fetchedFormulae: [Formula] = fetchJSON(url: formulaURL, decodeAs: [Formula].self)
+            async let fetchedCasks: [Cask] = fetchJSON(url: caskURL, decodeAs: [Cask].self)
+
+            // Update the properties
+            formulae = try await fetchedFormulae
+            casks = try await fetchedCasks
+
+            print("Successfully fetched \(formulae.count) formulae and \(casks.count) casks")
+        } catch {
+            print("Failed to fetch packages: \(error)")
+        }
+    }
+
+    private func fetchJSON<T: Decodable>(url: URL, decodeAs type: T.Type) async throws -> T {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
     }
 }
