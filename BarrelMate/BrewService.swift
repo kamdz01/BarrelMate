@@ -84,7 +84,7 @@ struct BrewService {
     
     /// Executes a brew command and *streams* each line of stdout/stderr via `onLineUpdate`.
     /// Returns the entire stdout once the process completes.
-    static func runBrewCommandStreaming(arguments: [String], onLineUpdate: @escaping (String) -> Void) async throws -> String {
+    static func runBrewCommandStreaming(arguments: [String], onLineUpdate: @escaping (String) -> Void = { _ in }) async throws -> String {
         guard let brewPath = findBrewPath() else {
             throw BrewError.brewNotFound
         }
