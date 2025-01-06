@@ -19,96 +19,107 @@ struct ContentView: View {
     ]) private var installedPackages: [BrewPackage]
     
     @State private var isAddPackageSheetPresented = false
+    @State private var isShowingLoadingIndicator = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // List installed packages
-            Text("Installed Packages").font(.headline)
-            
-            List {
-                ForEach(installedPackages, id: \.id) { pkg in
+        ZStack {
+            VStack(alignment: .leading, spacing: 12) {
+                // List installed packages
+                Text("Installed Packages").font(.headline)
+                
+                List {
+                    ForEach(installedPackages, id: \.id) { pkg in
+                        HStack {
+                            Grid(alignment: .leading) {
+                                GridRow {
+                                    Text(pkg.name)
+                                        .gridColumnAlignment(.leading)
+                                    Spacer()
+                                    Text(pkg.version)
+                                        .frame(width: 100, alignment: .leading)
+                                }
+                            }
+                            Spacer()
+                            Button("Upgrade") {
+                                Task {
+                                    await viewModel.upgrade(pkg)
+                                }
+                            }
+                            Button("Uninstall") {
+                                Task {
+                                    isShowingLoadingIndicator = true
+                                    await viewModel.uninstall(pkg)
+                                    isShowingLoadingIndicator = false
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                Divider()
+                
+                // Error feedback
+                if let error = viewModel.lastError {
+                    Text("Error: \(error)")
+                        .foregroundColor(.red)
+                }
+                
+                Spacer()
+            }
+            .disabled(isShowingLoadingIndicator)
+            .navigationTitle("")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
                     HStack {
-                        Grid(alignment: .leading) {
-                            GridRow {
-                                Text(pkg.name)
-                                    .gridColumnAlignment(.leading)
-                                Spacer()
-                                Text(pkg.version)
-                                    .frame(width: 100, alignment: .leading)
-                            }
-                        }
-                        Spacer()
-                        Button("Upgrade") {
-                            Task {
-                                await viewModel.upgrade(pkg)
-                            }
-                        }
-                        Button("Uninstall") {
-                            Task {
-                                await viewModel.uninstall(pkg)
-                            }
+                        if viewModel.brewPathFound {
+                            Text("Homebrew version: \(viewModel.brewVersion)")
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                        } else {
+                            Text("Homebrew not installed")
+                            Image(systemName: "multiply.circle")
+                                .foregroundColor(.red)
                         }
                     }
                 }
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Add Package", systemImage: "plus.circle", action: {
+                        isAddPackageSheetPresented.toggle()
+                    })
+                }
+                ToolbarItem(placement: .primaryAction) {
+                    Button("Refresh", systemImage: "arrow.trianglehead.2.counterclockwise.rotate.90", action: {
+                        Task {
+                            await withTaskGroup(of: Void.self) { group in
+                                group.addTask { await viewModel.checkBrew() }
+                                group.addTask { await viewModel.refreshPackages() }
+                                group.addTask { await viewModel.fetchPackages() }
+                            }
+                        }
+                    })
+                }
             }
-            
-            Divider()
-            
-            // Error feedback
-            if let error = viewModel.lastError {
-                Text("Error: \(error)")
-                    .foregroundColor(.red)
+            .sheet(isPresented: $isAddPackageSheetPresented) {
+                AddPackageView()
+                    .environmentObject(viewModel)
             }
-            
-            Spacer()
-        }
-        .navigationTitle("")
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                HStack {
-                    if viewModel.brewPathFound {
-                        Text("Homebrew version: \(viewModel.brewVersion)")
-                        Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                    } else {
-                        Text("Homebrew not installed")
-                        Image(systemName: "multiply.circle")
-                            .foregroundColor(.red)
+            .padding()
+            .onAppear {
+                // Let the view model know our ModelContext
+                viewModel.modelContext = context
+                
+                // Initial checks
+                Task {
+                    await withTaskGroup(of: Void.self) { group in
+                        group.addTask { await viewModel.checkBrew() }
+                        group.addTask { await viewModel.refreshPackages() }
+                        group.addTask { await viewModel.fetchPackages() }
                     }
                 }
             }
-            ToolbarItem(placement: .primaryAction) {
-                Button("Add Package", systemImage: "plus.circle", action: {
-                    isAddPackageSheetPresented.toggle()
-                })
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button("Refresh", systemImage: "arrow.trianglehead.2.counterclockwise.rotate.90", action: {
-                    Task {
-                        await withTaskGroup(of: Void.self) { group in
-                            group.addTask { await viewModel.checkBrew() }
-                            group.addTask { await viewModel.refreshPackages() }
-                            group.addTask { await viewModel.fetchPackages() }
-                        }
-                    }
-                })
-            }
-        }
-        .sheet(isPresented: $isAddPackageSheetPresented) {
-            AddPackageView()
-                .environmentObject(viewModel)
-        }
-        .padding()
-        .onAppear {
-            // Let the view model know our ModelContext
-            viewModel.modelContext = context
-            
-            // Initial checks
-            Task {
-                await withTaskGroup(of: Void.self) { group in
-                    group.addTask { await viewModel.checkBrew() }
-                    group.addTask { await viewModel.refreshPackages() }
-                    group.addTask { await viewModel.fetchPackages() }
+            HStack{
+                if isShowingLoadingIndicator {
+                    ProgressView()
                 }
             }
         }
