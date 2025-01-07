@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AACBBE7D2D2DC139006E5C2C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AACBBE7B2D2DC131006E5C2C /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AA539B962D1E080800EC1166 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		AA539B822D1E080600EC1166 /* BarrelMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarrelMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA539B952D1E080800EC1166 /* BarrelMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA539B9F2D1E080800EC1166 /* BarrelMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarrelMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AACBBE7B2D2DC131006E5C2C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +84,7 @@
 				AA539B982D1E080800EC1166 /* BarrelMateTests */,
 				AA539BA22D1E080800EC1166 /* BarrelMateUITests */,
 				AA539B832D1E080600EC1166 /* Products */,
+				AACBBE7B2D2DC131006E5C2C /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACBBE7D2D2DC139006E5C2C /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
